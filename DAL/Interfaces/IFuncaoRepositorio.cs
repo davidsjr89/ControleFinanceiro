@@ -11,5 +11,6 @@ namespace DAL.Interfaces
     {
         Task AdicionarFuncao(Funcao funcao);
         Task AtualizarFuncao(Funcao funcao);
+        IQueryable<Funcao> FiltrarFuncoes(string nomeFuncao);
     }
 }

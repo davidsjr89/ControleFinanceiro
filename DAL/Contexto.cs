@@ -15,7 +15,7 @@ namespace DAL
         public DbSet<Cartao> Cartoes { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Despesa> Despesas { get; set; }
-        public DbSet<Funcao> Funcaos { get; set; }
+        public DbSet<Funcao> Funcoes { get; set; }
         public DbSet<Ganho> Ganhos { get; set; }
         public DbSet<Mes> Meses { get; set; }
         public DbSet<Tipo> Tipos { get; set; }

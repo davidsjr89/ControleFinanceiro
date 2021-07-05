@@ -21,16 +21,21 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { TiposService } from './services/tipos.service';
 import { CategoriasService } from './services/categorias.service';
 import { FuncoesService } from './services/funcoes.service';
+import { NgxMaskModule } from 'ngx-mask';
 
 import { DialogExclusaoCategoriasComponent, ListagemCategoriasComponent } from './components/categoria/listagem-categorias/listagem-categorias.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NovaCategoriaComponent } from './components/categoria/nova-categoria/nova-categoria.component';
 import { AtualizarCategoriaComponent } from './components/categoria/atualizar-categoria/atualizar-categoria.component';
-import { ListagemFuncoesComponent } from './components/funcao/listagem-funcoes/listagem-funcoes.component';
+import { DialogExclusaoComponent, ListagemFuncoesComponent } from './components/funcao/listagem-funcoes/listagem-funcoes.component';
+import { NovaFuncaoComponent } from './components/funcao/nova-funcao/nova-funcao.component';
+import { AtualizarFuncaoComponent } from './components/funcao/atualizar-funcao/atualizar-funcao.component';
+import { RegistrarUsuarioComponent } from './components/usuario/registro/registrar-usuario/registrar-usuario.component';
+import { LoginUsuarioComponent } from './components/usuario/login/login-usuario/login-usuario.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +44,12 @@ import { ListagemFuncoesComponent } from './components/funcao/listagem-funcoes/l
     NovaCategoriaComponent,
     AtualizarCategoriaComponent,
     DialogExclusaoCategoriasComponent,
-    ListagemFuncoesComponent
+    DialogExclusaoComponent,
+    ListagemFuncoesComponent,
+    NovaFuncaoComponent,
+    AtualizarFuncaoComponent,
+    RegistrarUsuarioComponent,
+    LoginUsuarioComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +72,9 @@ import { ListagemFuncoesComponent } from './components/funcao/listagem-funcoes/l
     MatPaginatorModule,
     MatSortModule,
     MatSnackBarModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    FlexLayoutModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [
     TiposService, 

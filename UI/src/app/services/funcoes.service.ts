@@ -37,4 +37,9 @@ export class FuncoesService {
     const apiUrl = `${this.url}/${funcaoId}`;
     return this.http.delete<Funcao>(apiUrl);
   }
+
+  FiltrarFuncoes(nomeFuncao: string): Observable<Funcao[]>{
+    const apiUrl = `${this.url}/FiltrarFuncoes/${nomeFuncao}`;
+    return this.http.get<Funcao[]>(apiUrl);
+  }  
 }

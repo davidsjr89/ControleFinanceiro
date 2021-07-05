@@ -49,5 +49,18 @@ namespace DAL.Repositorios
                 throw ex;
             }
         }
+
+        public IQueryable<Funcao> FiltrarFuncoes(string nomeFuncao)
+        {
+            try
+            {
+                return _contexto.Funcoes.Where(x => x.Name.Contains(nomeFuncao));
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

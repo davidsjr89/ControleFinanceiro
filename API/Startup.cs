@@ -1,4 +1,6 @@
+using API.Extensions;
 using API.Validacoes;
+using API.ViewModels;
 using BLL.Models;
 using DAL;
 using DAL.Interfaces;
@@ -29,14 +31,20 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<Contexto>(opcoes => opcoes.UseSqlServer(Configuration.GetConnectionString("ConexaoBD")));
-            
+            services.AddIdentity<Usuario, Funcao>().AddEntityFrameworkStores<Contexto>();
+            services.ConfigurarSenhaUsuario();
+
+
             services.AddScoped<ICategoriaRepositorio, CategoriaRepositorio>();
             services.AddScoped<ITipoRepositorio, TipoRepositorio>();
             services.AddScoped<IFuncaoRepositorio, FuncaoRepositorio>();
+            services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
 
             services.AddTransient<IValidator<Categoria>, CategoriaValidator>();
-            
-            services.AddIdentity<Usuario, Funcao>().AddEntityFrameworkStores<Contexto>();
+            services.AddTransient<IValidator<RegistroViewModel>, RegistroViewModelValidator>();
+            services.AddTransient<IValidator<FuncoesViewModel>, FuncoesViewModelValidator>();
+            services.AddTransient<IValidator<LoginViewModel>, LoginViewModelValidator>();
+
 
             services.AddCors();
             services.AddSpaStaticFiles(diretorio =>
