@@ -1,3 +1,4 @@
+import { AuthGuardService } from './services/auth-guard.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -26,7 +27,9 @@ import { TiposService } from './services/tipos.service';
 import { CategoriasService } from './services/categorias.service';
 import { FuncoesService } from './services/funcoes.service';
 import { NgxMaskModule } from 'ngx-mask';
-
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { DialogExclusaoCategoriasComponent, ListagemCategoriasComponent } from './components/categoria/listagem-categorias/listagem-categorias.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NovaCategoriaComponent } from './components/categoria/nova-categoria/nova-categoria.component';
@@ -36,7 +39,13 @@ import { NovaFuncaoComponent } from './components/funcao/nova-funcao/nova-funcao
 import { AtualizarFuncaoComponent } from './components/funcao/atualizar-funcao/atualizar-funcao.component';
 import { RegistrarUsuarioComponent } from './components/usuario/registro/registrar-usuario/registrar-usuario.component';
 import { LoginUsuarioComponent } from './components/usuario/login/login-usuario/login-usuario.component';
+import { JwtModule } from '@auth0/angular-jwt';
+import { DashboardComponent } from './components/dashboard/dashboard/dashboard.component';
+import { HeaderComponent } from './components/dashboard/header/header.component';
 
+export function PegarTokenUsuario(){
+  return localStorage.getItem("tokenUsuarioLogado")
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +58,9 @@ import { LoginUsuarioComponent } from './components/usuario/login/login-usuario/
     NovaFuncaoComponent,
     AtualizarFuncaoComponent,
     RegistrarUsuarioComponent,
-    LoginUsuarioComponent
+    LoginUsuarioComponent,
+    DashboardComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -73,13 +84,24 @@ import { LoginUsuarioComponent } from './components/usuario/login/login-usuario/
     MatSortModule,
     MatSnackBarModule,
     MatProgressBarModule,
+    MatListModule,
     FlexLayoutModule,
-    NgxMaskModule.forRoot()
+    MatToolbarModule,
+    MatSidenavModule,
+    NgxMaskModule.forRoot(),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: PegarTokenUsuario,
+        allowedDomains: ['http://localhost:5000'],
+        disallowedRoutes: []
+      }
+    })
   ],
   providers: [
     TiposService, 
     CategoriasService,
-    FuncoesService
+    FuncoesService,
+    AuthGuardService
     ],
   bootstrap: [AppComponent]
 })

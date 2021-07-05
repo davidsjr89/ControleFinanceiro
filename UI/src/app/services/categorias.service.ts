@@ -4,12 +4,13 @@ import { Observable } from 'rxjs';
 import { Categoria } from '../models/categoria';
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem('tokenUsuarioLogado')}`
   })
 };
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CategoriasService {
 
@@ -17,12 +18,12 @@ export class CategoriasService {
   constructor(private http: HttpClient) { }
 
   PegarTodos(): Observable<Categoria[]>{
-    return this.http.get<Categoria[]>(this.url);
+    return this.http.get<Categoria[]>(this.url, httpOptions);
   }
 
   PegarCategoriaPeloId(categoriaId: number): Observable<Categoria>{
     const apiurl = `${this.url}/${categoriaId}`;
-    return this.http.get<Categoria>(apiurl);
+    return this.http.get<Categoria>(apiurl, httpOptions);
   }
 
   NovaCategoria(categoria: Categoria): Observable<any>{
@@ -41,6 +42,6 @@ export class CategoriasService {
 
   FiltrarCategorias(nomeCategoria: string): Observable<Categoria[]>{
     const apiUrl = `${this.url}/FiltrarCategorias/${nomeCategoria}`;
-    return this.http.get<Categoria[]>(apiUrl);
+    return this.http.get<Categoria[]>(apiUrl, httpOptions);
   }
 }

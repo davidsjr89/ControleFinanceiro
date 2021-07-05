@@ -15,6 +15,6 @@ namespace DAL.Interfaces
         Task IncluirUsuarioEmFuncao(Usuario usuario, string funcao);
         Task LogarUsuario(Usuario usuario, bool lembrar);
         Task<Usuario> PegarUsuarioPeloEmail(string email);
-
+        Task<IList<string>> PegarFuncoesUsuario(Usuario usuario);
     }
 }

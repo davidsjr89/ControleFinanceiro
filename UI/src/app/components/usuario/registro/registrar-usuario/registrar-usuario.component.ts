@@ -60,8 +60,9 @@ export class RegistrarUsuarioComponent implements OnInit {
       dadosRegistro.email = usuario.email;
       dadosRegistro.senha = usuario.senha;
       this.usuariosService.RegistrarUsuario(dadosRegistro).subscribe(dados => {
-        const emailUsuarioLogado =  dados.emailUsuarioLogado;
-        localStorage.setItem("emailUsuarioLogado", emailUsuarioLogado);
+        localStorage.setItem("emailUsuarioLogado", dados.emailUsuarioLogado);
+        localStorage.setItem("usuarioId", dados.usuarioId);
+        localStorage.setItem("tokenUsuarioLogado", dados.tokenUsuarioLogado);
         this.router.navigate(["categorias/listagemcategorias"]);
       },(err => {
         if (err.status === 400) {

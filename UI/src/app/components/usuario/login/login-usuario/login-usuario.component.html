@@ -1,4 +1,4 @@
-<div class="loginFormulario" fxLayout="row" fxLayoutAlign="center end" (click)="EnviarFormulario()">
+<div class="loginFormulario" fxLayout="row" fxLayoutAlign="center end" >
     <div class="divFormulario">
         <h1>Faça seu Login</h1>
         <mat-divider></mat-divider>
@@ -20,12 +20,12 @@
             </mat-card>
         </div>
         <div class="formulario">
-            <form [formGroup]="formulario">
+            <form [formGroup]="formulario" (ngSubmit)="EnviarFormulario()">
                 <div>
                     <mat-form-field>
                         <mat-label>Email</mat-label>
                         <input type="email" formControlName="email" placeholder="Digite o seu email" matInput required minlength="10" maxlength="50">
-                        <mat-error *ngIf="propriedade.email.touched && propriedade.email.invalid">
+                        <mat-error *ngIf="propriedade.email.invalid && propriedade.email.touched">
                             <sup>*</sup>Digite o seu email
                         </mat-error>
                         <mat-error *ngIf="propriedade.email.errors?.minlength">
@@ -40,7 +40,7 @@
                     <mat-form-field>
                         <mat-label>Senha</mat-label>
                         <input type="password" formControlName="senha" placeholder="Digite a sua senha" matInput required minlength="6" maxlength="50">
-                        <mat-error *ngIf="propriedade.senha.touched && propriedade.senha.invalid">
+                        <mat-error *ngIf="propriedade.email.invalid && propriedade.email.touched">
                             <sup>*</sup>Digite o seu senha
                         </mat-error>
                         <mat-error *ngIf="propriedade.senha.errors?.minlength">

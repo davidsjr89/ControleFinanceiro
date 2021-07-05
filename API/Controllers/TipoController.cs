@@ -1,6 +1,7 @@
 ﻿using BLL.Models;
 using DAL;
 using DAL.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +14,7 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize()]
     public class TipoController : ControllerBase
     {
         private readonly ITipoRepositorio _tipoRepositorio;

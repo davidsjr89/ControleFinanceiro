@@ -1,6 +1,7 @@
 ﻿using BLL.Models;
 using DAL;
 using DAL.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -22,13 +23,14 @@ namespace API.Controllers
         {
             _categoriaRepositorio = categoriaRepositorio;
         }
-
+        [Authorize(Roles = "Administrador")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Categoria>>> GetCategorias()
         {
             return await _categoriaRepositorio.PegarTodos().ToListAsync();
         }
 
+        [Authorize(Roles = "Administrador")]
         [HttpGet("{id}")]
         public async Task<ActionResult<Categoria>> GetCategoria(int id)
         {
@@ -41,6 +43,7 @@ namespace API.Controllers
             return categoria;
         }
 
+        [Authorize(Roles = "Administrador")]
         [HttpPost]
         public async Task<ActionResult<Categoria>> PostCategoria(Categoria categoria)
         {
@@ -52,6 +55,7 @@ namespace API.Controllers
             return BadRequest(ModelState);
         }
 
+        [Authorize(Roles = "Administrador")]
         [HttpPut("{id}")]
         public async Task<ActionResult> PutCategoria(int id, Categoria categoria)
         {
@@ -69,6 +73,7 @@ namespace API.Controllers
             
         }
 
+        [Authorize(Roles = "Administrador")]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Categoria>> DeleteCategoria(int id)
         {
@@ -81,6 +86,7 @@ namespace API.Controllers
             return Ok(new { mensagem = $"Categoria {categoria.Nome} excluida com sucesso" });
         }
 
+        [Authorize(Roles = "Administrador")]
         [HttpGet("FiltrarCategorias/{nomeCategoria}")]
         public async Task<ActionResult<IEnumerable<Categoria>>> FiltrarCategorias(string nomeCategoria)
         {

@@ -31,16 +31,16 @@ export class LoginUsuarioComponent implements OnInit {
     this.usuariosService.LogarUsuario(this.formulario.value).subscribe(resultado => {
       localStorage.setItem("emailUsuarioLogado", resultado.emailUsuarioLogado);
       localStorage.setItem("usuarioId", resultado.usuarioId);
+      localStorage.setItem("tokenUsuarioLogado", resultado.tokenUsuarioLogado);
       this.router.navigateByUrl('/categorias/listagemcategorias');
     }, (err => {
-      debugger
       if (err.status === 400) {
         for (const campo in err.error.errors) {
           if (err.error.errors.hasOwnProperty(campo)) {
             this.erros.push(err.error.errors[campo])
           }
         }
-      }else{
+      } else {
         this.erros.push(err.error);
       }
     })

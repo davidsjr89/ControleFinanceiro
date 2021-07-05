@@ -7,14 +7,17 @@ using DAL.Interfaces;
 using DAL.Repositorios;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.IO;
+using System.Text;
 
 namespace API
 {
@@ -51,6 +54,23 @@ namespace API
             {
                 diretorio.RootPath = "UI";
             });
+
+            var key = Encoding.ASCII.GetBytes(Settings.ChaveSecreta);
+
+            services.AddAuthentication(opcoes =>
+            {
+                opcoes.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                opcoes.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(opcoes => {
+                opcoes.RequireHttpsMetadata = false;
+                opcoes.SaveToken = true;
+                opcoes.TokenValidationParameters = new TokenValidationParameters { 
+                    ValidateIssuerSigningKey = true, 
+                    IssuerSigningKey = new SymmetricSecurityKey(key), 
+                    ValidateIssuer = false, 
+                    ValidateAudience = false };
+            });
+
             services.AddControllers()
                 .AddFluentValidation()
                 .AddNewtonsoftJson(options => 
@@ -80,6 +100,7 @@ namespace API
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseStaticFiles();
