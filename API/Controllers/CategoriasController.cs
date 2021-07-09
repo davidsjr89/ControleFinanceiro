@@ -15,6 +15,7 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize()]
     public class CategoriasController : ControllerBase
     {
         private readonly ICategoriaRepositorio _categoriaRepositorio;

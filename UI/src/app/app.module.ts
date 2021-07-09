@@ -1,3 +1,4 @@
+import { CartoesService } from './services/cartoes.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -42,6 +43,9 @@ import { LoginUsuarioComponent } from './components/usuario/login/login-usuario/
 import { JwtModule } from '@auth0/angular-jwt';
 import { DashboardComponent } from './components/dashboard/dashboard/dashboard.component';
 import { HeaderComponent } from './components/dashboard/header/header.component';
+import { NovoCartaoComponent } from './components/cartao/novo-cartao/novo-cartao.component';
+import { DialogExclusaoCartoesComponent, ListagemCartoesComponent } from './components/cartao/listagem-cartoes/listagem-cartoes.component';
+import { AtualizarCartoesComponent } from './components/cartao/atualizar-cartoes/atualizar-cartoes.component';
 
 export function PegarTokenUsuario(){
   return localStorage.getItem("tokenUsuarioLogado")
@@ -53,6 +57,7 @@ export function PegarTokenUsuario(){
     NovaCategoriaComponent,
     AtualizarCategoriaComponent,
     DialogExclusaoCategoriasComponent,
+    DialogExclusaoCartoesComponent,
     DialogExclusaoComponent,
     ListagemFuncoesComponent,
     NovaFuncaoComponent,
@@ -60,7 +65,10 @@ export function PegarTokenUsuario(){
     RegistrarUsuarioComponent,
     LoginUsuarioComponent,
     DashboardComponent,
-    HeaderComponent
+    HeaderComponent,
+    NovoCartaoComponent,
+    ListagemCartoesComponent,
+    AtualizarCartoesComponent
   ],
   imports: [
     BrowserModule,
@@ -101,7 +109,8 @@ export function PegarTokenUsuario(){
     TiposService, 
     CategoriasService,
     FuncoesService,
-    AuthGuardService
+    AuthGuardService,
+    CartoesService
     ],
   bootstrap: [AppComponent]
 })

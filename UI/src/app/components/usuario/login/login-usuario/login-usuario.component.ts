@@ -32,7 +32,7 @@ export class LoginUsuarioComponent implements OnInit {
       localStorage.setItem("emailUsuarioLogado", resultado.emailUsuarioLogado);
       localStorage.setItem("usuarioId", resultado.usuarioId);
       localStorage.setItem("tokenUsuarioLogado", resultado.tokenUsuarioLogado);
-      this.router.navigateByUrl('/categorias/listagemcategorias');
+      this.router.navigateByUrl('/cartoes/listagemcartoes');
     }, (err => {
       if (err.status === 400) {
         for (const campo in err.error.errors) {

@@ -64,7 +64,6 @@ C:\Projetos\Angular\ControleFinanceiro\API\obj\Debug\net5.0\API.GeneratedMSBuild
 C:\Projetos\Angular\ControleFinanceiro\API\obj\Debug\net5.0\API.AssemblyInfoInputs.cache
 C:\Projetos\Angular\ControleFinanceiro\API\obj\Debug\net5.0\API.AssemblyInfo.cs
 C:\Projetos\Angular\ControleFinanceiro\API\obj\Debug\net5.0\API.csproj.CoreCompileInputs.cache
-C:\Projetos\Angular\ControleFinanceiro\API\obj\Debug\net5.0\API.MvcApplicationPartsAssemblyInfo.cs
 C:\Projetos\Angular\ControleFinanceiro\API\obj\Debug\net5.0\API.MvcApplicationPartsAssemblyInfo.cache
 C:\Projetos\Angular\ControleFinanceiro\API\obj\Debug\net5.0\staticwebassets\API.StaticWebAssets.Manifest.cache
 C:\Projetos\Angular\ControleFinanceiro\API\obj\Debug\net5.0\staticwebassets\API.StaticWebAssets.xml

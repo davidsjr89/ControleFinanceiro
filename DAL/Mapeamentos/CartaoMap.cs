@@ -23,7 +23,7 @@ namespace DAL.Mapeamentos
             builder.Property(c => c.Numero).IsRequired().HasMaxLength(20);
             builder.HasIndex(c => c.Numero).IsUnique();
 
-            builder.Property(c => c.Limete).IsRequired();
+            builder.Property(c => c.Limite).IsRequired();
 
             builder.HasOne(c => c.Usuario).WithMany(c => c.Cartoes).HasForeignKey(c => c.UsuarioId).IsRequired().OnDelete(DeleteBehavior.NoAction);
             builder.HasMany(c => c.Despesas).WithOne(c => c.Cartao);

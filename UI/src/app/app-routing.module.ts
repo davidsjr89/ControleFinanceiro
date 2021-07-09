@@ -1,3 +1,6 @@
+import { AtualizarCartoesComponent } from './components/cartao/atualizar-cartoes/atualizar-cartoes.component';
+import { ListagemCartoesComponent } from './components/cartao/listagem-cartoes/listagem-cartoes.component';
+import { NovoCartaoComponent } from './components/cartao/novo-cartao/novo-cartao.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { DashboardComponent } from './components/dashboard/dashboard/dashboard.component';
 import { LoginUsuarioComponent } from './components/usuario/login/login-usuario/login-usuario.component';
@@ -31,6 +34,15 @@ const routes: Routes = [
       },
       {
         path: 'funcoes/atualizarfuncao/:id', component: AtualizarFuncaoComponent
+      },
+      {
+        path: 'cartoes/novocartao', component: NovoCartaoComponent
+      },
+      {
+        path: 'cartoes/listagemcartoes', component: ListagemCartoesComponent
+      },
+      {
+        path: 'cartoes/atualizarcartao/:id', component: AtualizarCartoesComponent
       },
     ]
   },
