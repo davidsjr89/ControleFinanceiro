@@ -14,10 +14,12 @@ namespace API.Controllers
     {
 
         private readonly ICartaoRepositorio _cartaoRepositorio;
+        private readonly IDespesaRepositorio _despesaRepositorio;
 
-        public CartoesController(ICartaoRepositorio cartaoRepositorio)
+        public CartoesController(ICartaoRepositorio cartaoRepositorio, IDespesaRepositorio despesaRepositorio)
         {
             _cartaoRepositorio = cartaoRepositorio;
+            _despesaRepositorio = despesaRepositorio;
         }
 
         [HttpGet("PegarCartoesPeloUsuarioId/{usuarioId}")]
@@ -73,6 +75,9 @@ namespace API.Controllers
             Cartao cartao = await _cartaoRepositorio.PegarPeloId(id);
             if (cartao == null)
                 return NotFound();
+
+            IEnumerable<Despesa> despesas = await _despesaRepositorio.PegarDespesarPeloCartaoId(cartao.CartaoId);
+            _despesaRepositorio.ExcluirDespesas(despesas);
 
             await _cartaoRepositorio.Excluir(cartao);
 

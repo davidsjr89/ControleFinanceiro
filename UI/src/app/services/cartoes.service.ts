@@ -3,7 +3,6 @@ import { Cartao } from './../models/cartao';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { httpOptions } from '../shared/httpOptions';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +40,7 @@ export class CartoesService {
   FiltrarCartoes(numeroCartao: any): Observable<Cartao[]>{
     const apiUrl = `${this.url}/FiltrarCartoes/${numeroCartao}`;
     return this.http.get<Cartao[]>(apiUrl);
-
   }
+
+  
 }

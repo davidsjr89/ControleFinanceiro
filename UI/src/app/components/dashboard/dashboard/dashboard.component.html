@@ -6,6 +6,10 @@
                 <mat-icon>credit_card</mat-icon>Cartões
             </mat-list-item>
             <mat-divider></mat-divider>
+            <mat-list-item routerLink="/despesas/listagemdespesas">
+                <mat-icon>store</mat-icon>Despesas
+            </mat-list-item>
+            <mat-divider></mat-divider>
             <div *ngIf="isAdministrador">
                 <mat-list-item routerLink="categorias/listagemcategorias">
                     <mat-icon>reorder</mat-icon> Categorias

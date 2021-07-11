@@ -75,3 +75,4 @@ C:\Projetos\Angular\ControleFinanceiro\API\obj\Debug\net5.0\ref\API.dll
 C:\Projetos\Angular\ControleFinanceiro\API\obj\Debug\net5.0\API.pdb
 C:\Projetos\Angular\ControleFinanceiro\API\obj\Debug\net5.0\API.genruntimeconfig.cache
 C:\Projetos\Angular\ControleFinanceiro\API\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Projetos\Angular\ControleFinanceiro\API\obj\Debug\net5.0\API.MvcApplicationPartsAssemblyInfo.cs

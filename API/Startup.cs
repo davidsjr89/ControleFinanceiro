@@ -40,15 +40,18 @@ namespace API
 
             services.AddScoped<ICategoriaRepositorio, CategoriaRepositorio>();
             services.AddScoped<ITipoRepositorio, TipoRepositorio>();
+            services.AddScoped<IMesRepositorio, MesRepositorio>();
             services.AddScoped<IFuncaoRepositorio, FuncaoRepositorio>();
             services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
             services.AddScoped<ICartaoRepositorio, CartaoRepositorio>();
+            services.AddScoped<IDespesaRepositorio, DespesaRepositorio>();
 
             services.AddTransient<IValidator<Categoria>, CategoriaValidator>();
             services.AddTransient<IValidator<RegistroViewModel>, RegistroViewModelValidator>();
             services.AddTransient<IValidator<FuncoesViewModel>, FuncoesViewModelValidator>();
             services.AddTransient<IValidator<LoginViewModel>, LoginViewModelValidator>();
             services.AddTransient<IValidator<Cartao>, CartaoValidator>();
+            services.AddTransient<IValidator<Despesa>, DespesaValidator>();
 
             services.AddCors();
             services.AddSpaStaticFiles(diretorio =>

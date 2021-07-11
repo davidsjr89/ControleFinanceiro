@@ -15,7 +15,6 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize()]
     public class CategoriasController : ControllerBase
     {
         private readonly ICategoriaRepositorio _categoriaRepositorio;
@@ -92,6 +91,11 @@ namespace API.Controllers
         public async Task<ActionResult<IEnumerable<Categoria>>> FiltrarCategorias(string nomeCategoria)
         {
             return await _categoriaRepositorio.FiltrarCategorias(nomeCategoria).ToListAsync();
+        }
+        [HttpGet("FiltrarCategoriasDespesas")]
+        public async Task<ActionResult<IEnumerable<Categoria>>> FiltrarCategoriasDespesas()
+        {
+            return await _categoriaRepositorio.PegarCategoriasPeloTipo("Despesa").ToListAsync();
         }
     }
 }
